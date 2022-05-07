@@ -68,13 +68,30 @@ void Renderer::Update(float dt)
 
 extern "C"
 {
+    float dt;
+
     Engine* Engine_new()
     {
         return new Engine();
     }
 
+    Renderer* Renderer_new()
+    {
+        return new Renderer();
+    }
+
     void Engine_Initialize(Engine* engine)
     {
         engine -> Initialize();
+    }
+
+    void Renderer_Load(Renderer* renderer)
+    {
+        renderer -> Renderer::Load();
+    }
+
+    void Renderer_Update(Renderer* renderer)
+    {  
+        renderer -> RenderPath3D::Update(dt);
     }
 }
