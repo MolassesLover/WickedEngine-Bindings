@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "cd Source/Building && sh Build.sh",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Playtest",
+            "type": "shell",
+            "command": "cd Source/Building && python Build.py -p true",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+            "kind": "build",
+            "isDefault": false
+            }
+        }
+    ]
+}

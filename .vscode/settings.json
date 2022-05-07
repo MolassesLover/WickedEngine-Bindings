@@ -1,0 +1,16 @@
+{
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.hg/store/**": true,
+        ".flatpak/**": true,
+        "_build/**": true
+    },
+
+    "CMake": {
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/Build",
+    "cmake.buildTask": true
+    }
+}

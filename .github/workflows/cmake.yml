@@ -1,0 +1,43 @@
+name: CMake
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: |
+        wget -qO - https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo apt-key add -
+        sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-1.2.170-focal.list https://packages.lunarg.com/vulkan/1.2.170/lunarg-vulkan-1.2.170-focal.list
+        sudo apt update
+        sudo apt install vulkan-sdk
+        sudo apt install libsdl2-dev
+
+    - name: Build engine
+      run: |
+        git submodule update --init Library/WickedEngine
+        cd Library/WickedEngine/
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+        make
+        cd ../../../ && ls
+        cmake -B Build -DWickedEngine_DIR=Library/WickedEngine/build/cmake .
+      
+    - name: Build Engine
+      run: |
+        cd Source/Building/ 
+        chmod +x Build.sh
+        sh Build.sh
+      
