@@ -14,7 +14,7 @@
             }
         },
         {
-            "label": "Playtest",
+            "label": "Build & Run",
             "type": "shell",
             "command": "cd Source/Building && python Build.py -p true",
             "problemMatcher": [
