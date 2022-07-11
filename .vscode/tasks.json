@@ -12,18 +12,6 @@
                 "kind": "build",
                 "isDefault": true
             }
-        },
-        {
-            "label": "Build & Run",
-            "type": "shell",
-            "command": "cd Source/Building && python Build.py -p true",
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-            "kind": "build",
-            "isDefault": false
-            }
         }
     ]
 }
